@@ -57,7 +57,7 @@ Legend:
       {%- if site.data.byLanguage[lang].latestRecsTotal > 0 -%}
       <td{% if rec.translations %}
            {% if rec.translations[lang] %}
-            class="{{ rec.translations[lang].states | join: ' ' }}"><a title="{% if rec.translations[lang].isOutdated %}Outdated {% elsif rec.translations[lang].isPending %}Ongoing {% elsif rec.translations[lang].isInReview %}Pending review {% endif %}{% if rec.translations[lang].authorized %}Authorized {% endif %}{{ site.data.lang[lang].name }} translation of {{ rec.translations[lang].origTitle }}" href="{{ rec.translations[lang].uri }}"><span aria-role="img">
+            class="{{ rec.translations[lang].states | join: ' ' }}"><a title="{% if rec.translations[lang].isOutdated %}Outdated {% elsif rec.translations[lang].isPending %}Ongoing {% elsif rec.translations[lang].isInReview %}Pending review {% endif %}{% if rec.translations[lang].authorized %}Authorized {% endif %}{{ site.data.lang[lang].name }} translation of {{ rec.translations[lang].origTitle }}" href="{{ rec.translations[lang].uri }}"><span role="img">
              {%- if rec.translations[lang].isOutdated -%}
                ✗
              {%- elsif rec.translations[lang].authorized -%}
@@ -77,13 +77,13 @@ Legend:
              {%- endif -%}</span></a>
            {%- else -%}
              >
-           {%- endif- %}
+           {%- endif -%}
          {%- else -%}
            >
          {%- endif -%}
       </td>
       {% endif %}
-      {%- endfor- %}
+      {%- endfor -%}
     </tr>
     {%- endfor %}
   </tbody>
@@ -105,12 +105,12 @@ Legend:
 <!-- TODO: non-RECS -->
 
 <style>
-a[href]:focus, a[href]:hover {
-  background: #f8f8f8;
-  background: rgba(75%, 75%, 75%, .25);
-  border-bottom-width: 3px;
-  margin-bottom: -2px;
-  opacity: 1;
+.default .content {
+    display:block !important;
+}
+
+section:has(> .related){
+    display: none;
 }
 
 dl.legend dt { width: 2.5em; padding: 0.5em; text-align: center; margin-right: 1em; }
@@ -132,18 +132,13 @@ tbody td a { display: block; margin: 0; width: 100%; height: 100%; }
 
 tbody tr.hidden { display: none; }
 
-thead tr th.lang { position: sticky; top: 0; background-color: transparent;}
+thead tr th.lang { background-color: transparent;}
 
 th.lang {
   /* Something you can count on */
   height: 140px;
   white-space: nowrap;
   border-right: none;
-}
-.table-wrap {
-    width: 70vw !important;
-    max-width: 70vw !important;
-    max-height: 1000px;
 }
 th.lang > div {
   transform:

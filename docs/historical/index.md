@@ -1,11 +1,11 @@
 ---
-title: Translations of W3C standards and notes — Historical reports
+title: Translations of W3C standards and notes — Historical documents
 description: List of translations of historical W3C standards and notes (authorized and volunteer translations)
 stylesheets:
   - ../css/translation-management.css
 ---
 
-For reference or inspiration, this page lists translations of [superseded](https://www.w3.org/standards/types/#x5-2-superseded-recommendation), [obsolete](https://www.w3.org/standards/types/#x5-3-obsolete-recommendation), and outdated specifications.
+For reference or inspiration, this page lists translations of historical documents, such as [superseded](https://www.w3.org/standards/types/#x5-2-superseded-recommendation), [obsolete](https://www.w3.org/standards/types/#x5-3-obsolete-recommendation), and outdated standards.
 
 **Note:** In case of disputes, the authoritative version of the specification is the original, English document.
 
@@ -14,7 +14,7 @@ For reference or inspiration, this page lists translations of [superseded](https
 {% assign cfts = site.data.translations | where_exp:"item","item.isLatest == false and item.countPublishedTranslations > 0" %}
 {%- for cft in cfts -%}
     {%- unless exceptions contains cft.id -%}
-        {% include spec-listing.html filter="outdated" %}
+        {% include spec-listing.html %}
     {%- endunless -%}
 {%- endfor %}
 </section>
